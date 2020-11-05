@@ -1,7 +1,7 @@
 package main
 
 import (
-	"controllers"
+	"github.com/liusonfer/reqT/controllers"
 )
 
 func main() {

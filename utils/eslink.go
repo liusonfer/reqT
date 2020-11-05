@@ -8,7 +8,7 @@ import (
 )
 
 var host = []string{
-	"http://es-cn-nif1qkn6l0006z0tw.public.elasticsearch.aliyuncs.com:9200/",
+	"http://es-cn-nif1qn6l0006z0tw.public.elasticsearch.aliyuncs.com:9200/",
 }
 var EsClient *elastic.Client
 

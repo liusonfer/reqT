@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"D:\GOCOURSE\reqT\utils"
+	"github.com/liusonfer/reqT/utils"
 )
 
 func Init(i string) {
