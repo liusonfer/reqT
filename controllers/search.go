@@ -59,10 +59,17 @@ func Search(i, est, edt string) {
 
 func SearchAdd() {
 
+	// search := map[string]string{
+	// 	"index": utils.Input("请输入索引: "),
+	// 	"stime": utils.Input("请输入搜索开始时间: "),
+	// 	"dtime": utils.Input("请输入搜索结束时间: "),
+	// }
+
+	i, s, t := utils.ParFlag()
 	search := map[string]string{
-		"index": utils.Input("请输入索引: "),
-		"stime": utils.Input("请输入搜索开始时间: "),
-		"dtime": utils.Input("请输入搜索结束时间: "),
+		"index": i,
+		"stime": s,
+		"dtime": t,
 	}
 
 	if ok := utils.IndexExists(search["index*"]); !ok {

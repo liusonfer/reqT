@@ -35,7 +35,7 @@ func IndexExists(index ...string) bool {
 	if err != nil {
 		fmt.Printf("%v\n", err)
 	}
-	fmt.Println(exists)
+	// fmt.Println(exists)
 	return exists
 }
 
