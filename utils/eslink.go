@@ -4,17 +4,18 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/olivere/elastic/v7"
+	elastic "github.com/olivere/elastic/v7"
 )
 
-var host = []string{
-	"http://es-cn-nif1qn6l0006z0tw.public.elasticsearch.aliyuncs.com:9200/",
+var Host = []string{
+	"http://es-cn-nif1qkn6l0006z0tw.public.elasticsearch.aliyuncs.com:9200/",
 }
 var EsClient *elastic.Client
 
 func init() {
 	var err error
-	EsClient, err = elastic.NewClient(elastic.SetURL(host...), elastic.SetSniff(false), elastic.SetBasicAuth("elastic", "YyG&vyFvX0xND#&8"))
+
+	EsClient, err = elastic.NewClient(elastic.SetURL(Host...), elastic.SetSniff(false), elastic.SetBasicAuth("elastic", "YyG&vyFvX0xND#&8"))
 	if err != nil {
 		fmt.Printf("create client failed,err:%v", err)
 	}
@@ -22,7 +23,7 @@ func init() {
 
 func PingNode() int {
 
-	_, code, err := EsClient.Ping(host[0]).Do(context.Background())
+	_, code, err := EsClient.Ping(Host[0]).Do(context.Background())
 	if err != nil {
 		fmt.Printf("Ping es failed,err:%v\n", err)
 	}
@@ -49,6 +50,5 @@ func EsQueryAll(index, type_, fieldName, fieldValue, start_time, stop_time strin
 		fmt.Println("sdsafsafafa", err)
 		panic(err)
 	}
-	fmt.Println("1")
 	return searchResult
 }
