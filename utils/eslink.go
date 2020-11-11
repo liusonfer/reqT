@@ -35,19 +35,19 @@ func IndexExists(index ...string) bool {
 	if err != nil {
 		fmt.Printf("%v\n", err)
 	}
-	// fmt.Println(exists)
 	return exists
 }
 
 func EsQueryAll(index, type_, fieldName, fieldValue, start_time, stop_time string) *elastic.SearchResult {
+	hig := elastic.NewHighlight().NumOfFragments(0).FragmentSize(100)
 	timeQ := elastic.NewRangeQuery("@timestamp").Gte(start_time).Lte(stop_time)
 	query := elastic.NewMatchPhraseQuery(fieldName, fieldValue)
 	generalQ := elastic.NewBoolQuery().Should().Filter(timeQ).Filter(query)
 	searchResult, err := EsClient.Search(index).
-		Query(generalQ).RestTotalHitsAsInt(true).Size(100000).
+		Query(generalQ).RestTotalHitsAsInt(true).Size(100000).Highlight(hig).
 		Do(context.Background())
 	if err != nil {
-		fmt.Println("sdsafsafafa", err)
+		// fmt.Println("sdsafsafafa", err)
 		panic(err)
 	}
 	return searchResult
